@@ -27,6 +27,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -176,7 +177,7 @@ public class FileUtils {
 		OutputStream ostream = null;
 		try {
 			subMonitor.beginTask("Downloading "+url.getFile()+" from "+url.getHost(), blocks);
-			jarFile = java.io.File.createTempFile(url.getFile(), null);
+			jarFile = Files.createTempFile(url.getFile(), null).toFile();
 			if (istream!=null) {
 				ostream = new FileOutputStream(jarFile);
 	
